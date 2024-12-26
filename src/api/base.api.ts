@@ -2,7 +2,7 @@ import {
 	createApi,
 	fetchBaseQuery,
 	BaseQueryFn,
-	BaseQueryApi,
+	FetchBaseQueryError,
 } from '@reduxjs/toolkit/query/react';
 import { setCredentials, logOut } from '../features/authentication/authSlice';
 
@@ -12,14 +12,21 @@ interface QueryArgs {
 	body?: unknown;
 }
 
-const baseUrl = process.env.VITE_API_BASE_URL as string;
-const xApiKey = process.env.VITE_X_API_KEY as string;
+interface RefreshResponse {
+	accessToken: string;
+	refreshToken: string;
+}
 
-const baseQuery: BaseQueryFn<QueryArgs, unknown, unknown> = fetchBaseQuery({
-	baseUrl: baseUrl,
-	prepareHeaders: (headers, { getState }: Pick<BaseQueryApi, 'getState'>) => {
+import type { RootState } from '@/store/store';
+
+const baseUrl = import.meta.env.VITE_API_BASE_URL as string;
+const xApiKey = import.meta.env.VITE_X_API_KEY as string;
+
+const rawBaseQuery = fetchBaseQuery({
+	baseUrl,
+	prepareHeaders: (headers, { getState }) => {
+		const { token } = (getState() as RootState).auth;
 		headers.set('x-api-key', xApiKey);
-		const token = (getState() as any).auth.token;
 		if (token) {
 			headers.set('authorization', `Bearer ${token}`);
 			headers.set('content-type', 'application/json');
@@ -28,17 +35,19 @@ const baseQuery: BaseQueryFn<QueryArgs, unknown, unknown> = fetchBaseQuery({
 	},
 });
 
-const baseQueryWithReauth: BaseQueryFn<QueryArgs, unknown, unknown> = async (
-	args,
-	api,
-	extraOptions
-) => {
-	let result = await baseQuery(args, api, extraOptions);
+const baseQueryWithReauth: BaseQueryFn<
+	QueryArgs,
+	unknown,
+	FetchBaseQueryError
+> = async (args, api, extraOptions) => {
+	let result = await rawBaseQuery(args, api, extraOptions);
 
-	if ((result?.error as any)?.status === 401) {
-		if ((result?.error as any)?.data?.statusCode == 10003) {
-			const refreshToken = (api.getState() as any).auth.refreshToken;
-			const refreshResult = await baseQuery(
+	if (result.error?.status === 401) {
+		const errorData = result.error.data as { statusCode?: number };
+
+		if (errorData?.statusCode === 10003) {
+			const { refreshToken, user } = (api.getState() as RootState).auth;
+			const refreshResult = await rawBaseQuery(
 				{
 					url: '/token/refresh',
 					method: 'POST',
@@ -48,27 +57,26 @@ const baseQueryWithReauth: BaseQueryFn<QueryArgs, unknown, unknown> = async (
 				extraOptions
 			);
 
-			if ((refreshResult as any)?.data) {
-				const user = (api.getState() as any).auth.user;
-				api.dispatch(setCredentials({ ...(refreshResult as any).data, user }));
-				result = await baseQuery(args, api, extraOptions);
+			if (!refreshResult.error && refreshResult.data) {
+				const refreshedData = refreshResult.data as RefreshResponse;
+
+				api.dispatch(setCredentials({ ...refreshedData, user }));
+
+				result = await rawBaseQuery(args, api, extraOptions);
 			} else {
 				api.dispatch(logOut());
 			}
 		}
 
-		if ((result?.error as any)?.data?.statusCode == 10004) {
+		if (errorData?.statusCode === 10004) {
 			api.dispatch(logOut());
 		}
-	}
-
-	if ((result?.error as any)?.status === 401) {
-		api.dispatch(logOut());
 	}
 
 	return result;
 };
 
+// --- RTK Query API slice ---
 export const baseApi = createApi({
 	baseQuery: baseQueryWithReauth,
 	endpoints: () => ({}),
