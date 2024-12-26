@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom';
 import { signUpFormDataType } from './signUpFormSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
-import { useSignUpMutation } from '@/api/signUpApiSlice';
+import { useSignUpMutation } from '@/api/signup.api';
 import { useNavigate } from 'react-router-dom';
 import { signUpFormSchema } from '@/validationSchemas';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { RootState } from '@/store/store';
 import { GoogleLogin } from '@react-oauth/google';
-import { useGoogleLogInMutation } from '@/api/signUpApiSlice';
+import { useGoogleLogInMutation } from '@/api/signup.api';
 
 export const googleIcon = (
 	<svg

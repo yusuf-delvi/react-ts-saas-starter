@@ -3,8 +3,8 @@ import PricingCard from '@/components/ui/PricingCard';
 import {
 	useCreatePortalSessionMutation,
 	useUpdateSubscriptionMutation,
-} from '@/api/paymentApiSlice';
-import { useGetProfileDetailQuery } from '@/api/settingsApiSlice';
+} from '@/api/payment.api';
+import { useGetProfileDetailQuery } from '@/api/settings.api';
 import { resetStep } from './signUpFormSlice';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';

@@ -1,8 +1,8 @@
 import {
 	useCreatePortalSessionMutation,
 	useUpdateSubscriptionMutation,
-} from '@/api/paymentApiSlice';
-import { useGetProfileDetailQuery } from '@/api/settingsApiSlice';
+} from '@/api/payment.api';
+import { useGetProfileDetailQuery } from '@/api/settings.api';
 import PricingCardForSettings from '@/components/ui/PricingCardForSettings';
 import React, { useEffect, useState } from 'react';
 

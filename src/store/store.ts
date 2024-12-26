@@ -15,7 +15,7 @@ import {
 	REGISTER,
 } from 'redux-persist';
 import authReducer from '../features/authentication/authSlice';
-import { apiSlice } from '../api/apiSlice';
+import { baseApi } from '../api/base.api';
 import signUpFormReducer from '../features/SignUp/signUpFormSlice';
 import signInFormReducer from '../features/SignIn/signInFormSlice';
 import setPasswordFormReducer from '../features/SignIn/setPasswordFormSlice';
@@ -40,7 +40,7 @@ const persistConfig = {
 
 // Combined root reducer
 const rootReducer = combineReducers({
-	[apiSlice.reducerPath]: apiSlice.reducer,
+	[baseApi.reducerPath]: baseApi.reducer,
 	auth: authReducer,
 	signUpForm: signUpFormReducer,
 	signInForm: signInFormReducer,
@@ -62,7 +62,7 @@ const customizedMiddleware = getDefaultMiddleware({
 
 export const store = configureStore({
 	reducer: persistedReducer,
-	middleware: customizedMiddleware.concat(apiSlice.middleware, errorMiddleware),
+	middleware: customizedMiddleware.concat(baseApi.middleware, errorMiddleware),
 	devTools: true,
 });
 

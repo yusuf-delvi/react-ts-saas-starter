@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/store/store';
 import AccountActions from './AccountActions';
-import { useGetProfileDetailQuery } from '@/api/settingsApiSlice';
+import { useGetProfileDetailQuery } from '@/api/settings.api';
 import { updateIsSettingsOpen } from '../settings/settingsSlice';
 import { updateStep } from '../settings/accountFormSlice';
 import CrossIcon from '../../assets/Icons/CrossIcon.svg';

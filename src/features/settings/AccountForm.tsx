@@ -11,7 +11,7 @@ import { updateAccountFormData } from './accountFormSlice';
 import {
 	useGetProfileDetailQuery,
 	useUpdateAccountMutation,
-} from '@/api/settingsApiSlice';
+} from '@/api/settings.api';
 import Loading from '../../assets/Icons/Loading.svg';
 
 const AccountForm: React.FC = () => {

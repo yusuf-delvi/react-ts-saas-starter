@@ -3,7 +3,7 @@ import PersonIcon from '../../assets/Icons/User.svg';
 import UploadIcon from '../../assets/Icons/UploadIcon.svg';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { useUploadQuery } from '@/api/uploadApiSlice';
+import { useUploadQuery } from '@/api/upload.api';
 import { RootState } from '@/store/store';
 import { updateAccountFormData } from '@/features/settings/accountFormSlice';
 
