@@ -1,4 +1,4 @@
-import { baseApi } from './base.api';
+import { baseApi } from './index.api';
 
 export const paymentApiSlice = baseApi.injectEndpoints({
 	endpoints: (builder) => ({

@@ -1,4 +1,4 @@
-import { baseApi } from './base.api';
+import { baseApi } from './index.api';
 
 interface Error {
 	error: object;
