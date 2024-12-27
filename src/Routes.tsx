@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import DashboardPage from './pages/DashboardPage';
+import DashboardPage from './pages/Dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import SignUpPage from './pages/SignUp';
 import SignInPage from './pages/SignIn';
-import NotFound from './components/ui/NotFound';
+import NotFound from './pages/NotFound';
 
 type AppRoute = {
 	path: string;

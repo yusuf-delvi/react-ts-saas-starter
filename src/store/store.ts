@@ -14,17 +14,16 @@ import {
 	PURGE,
 	REGISTER,
 } from 'redux-persist';
-import authReducer from '../features/authentication/authSlice';
-import { baseApi } from '../api/base.api';
-import signUpFormReducer from '../features/SignUp/signUpFormSlice';
-import signInFormReducer from '../features/SignIn/signInFormSlice';
-import setPasswordFormReducer from '../features/SignIn/setPasswordFormSlice';
-import accountFormReducer from '@/features/settings/accountFormSlice';
-import settingsSliceReducer from '@/features/settings/settingsSlice';
-import errorReducer from '../features/error/errorSlice';
+import authReducer from './slices/authSlice';
+import { baseApi } from '../api/index.api';
+import signUpFormReducer from './slices/signupSlice';
+import signInFormReducer from './slices/signInFormSlice';
+import setPasswordFormReducer from './slices/setPasswordFormSlice';
+import accountFormReducer from '@/store/slices/accountFormSlice';
+import settingsSliceReducer from '@/store/slices/settingsSlice';
+import errorReducer from './slices/errorSlice';
 import { errorMiddleware } from './errorMiddleware';
 
-// Redux persist config
 const persistConfig = {
 	key: 'root',
 	version: 1,
@@ -53,7 +52,6 @@ const rootReducer = combineReducers({
 // Persisted reducer
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-// Customized middleware
 const customizedMiddleware = getDefaultMiddleware({
 	serializableCheck: {
 		ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],

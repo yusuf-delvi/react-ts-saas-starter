@@ -4,7 +4,7 @@ import {
 	BaseQueryFn,
 	FetchBaseQueryError,
 } from '@reduxjs/toolkit/query/react';
-import { setCredentials, logOut } from '../features/authentication/authSlice';
+import { setCredentials, logOut } from '../store/slices/authSlice';
 
 interface QueryArgs {
 	url: string;

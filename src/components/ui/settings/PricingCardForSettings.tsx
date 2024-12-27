@@ -1,6 +1,5 @@
 import React from 'react';
-import Button from '../common/Button';
-import { cn } from '@/utils/cn';
+import Button from '../../common/Button';
 
 const checkSvg = (
 	<svg
@@ -79,82 +78,79 @@ interface Props {
 	description?: string;
 	textArray?: string[];
 	buttonText?: string;
-	active?: boolean;
-	disabled?: boolean;
+	isActivePlan?: boolean;
 	onClick?: () => void;
+	disabled?: boolean;
 }
-
-const PricingCard: React.FC<Props> = ({
+const PricingCardForSettings: React.FC<Props> = ({
 	primary = false,
 	price,
 	heading,
 	description,
 	textArray,
 	buttonText = 'Select Plan',
-	active,
-	disabled,
+	isActivePlan,
 	onClick,
+	disabled,
 }) => {
 	return (
 		<>
 			<div
-				className={`
-        relative
-        ${
+				className={`${
 					primary ? 'bg-[#F0EEEE]' : 'bg-black'
 				} flex flex-col justify-between p-4 w-[400px] border-[1.25px] ${
 					primary ? 'border-gray-300 ' : 'border-black '
 				}  shadow-xl rounded-[10.2px] overflow-hidden hover:scale-105 transition-all ease-in-out duration-500`}
 			>
-				{active && (
-					<div className='h-[18px] rounded-[3px] bg-success flex flex-row items-center justify-center absolute right-4'>
-						<span className='text-[8px] text-white font-medium'>
-							Active Plan
-						</span>
-					</div>
-				)}
-				<div className=' '>
+				<div className=' relative '>
 					{!primary && (
 						<div
-							className={`h-[10px] ${
+							className={` h-[9px] ${
 								primary ? 'text-black' : 'text-white'
-							} mb-6`}
+							} mb-3`}
 						>
-							<h3 className='text-sm font-medium'>Recommended</h3>
+							<h3 className=' text-xs font-medium'>Recommended</h3>
 						</div>
 					)}
-					<div className='h-[61px]'>
+					<div className='  h-[30px] '>
 						<h2
-							className={`text-2xl font-bold ${
+							className={`text-xl font-semibold ${
 								primary ? 'text-black' : 'text-white'
 							}`}
 						>
 							{heading}
 						</h2>
+						{isActivePlan && (
+							<Button
+								text='Active Plan'
+								className=' p-[6px] text-[8px] absolute top-0 right-0 bg-[#5BBE79] cursor-default'
+								disabled
+							/>
+						)}
 					</div>
 					<div className=' '>
 						<span
 							className={`${
 								primary ? 'text-black' : 'text-white'
-							} font-medium text-4xl`}
+							} font-medium text-[28px]`}
 						>
 							${price}
 						</span>
-						<span className=' text-gray-500 font-semibold text-xl'>
+						<span className=' text-gray-500 font-semibold text-base'>
 							/ month
 						</span>
 					</div>
-					<div className='h-[84px] mt-6'>
+					<div className=' h-[66px] mt-[10px] '>
 						<p
 							className={`${
 								primary ? 'text-black' : 'text-white'
-							} text-lg leading-7 `}
+							}  text-sm leading-6 `}
 						>
 							{description}
 						</p>
 					</div>
 					<div className=''>
-						<ul className='mt-12 mb-6'>
+						<ul className='mt-6 mb-6'>
 							{textArray?.map((text, index) => (
 								<li
 									key={index}
@@ -163,7 +159,7 @@ const PricingCard: React.FC<Props> = ({
 									} flex mb-4 `}
 								>
 									{primary ? unCheckSvg : checkSvg}
-									<span className=' text-base -mt-1 ml-2.5'>{text}</span>
+									<span className=' text-sm -mt-1 ml-2.5'>{text}</span>
 								</li>
 							))}
 						</ul>
@@ -171,22 +167,19 @@ const PricingCard: React.FC<Props> = ({
 				</div>
 				<div className=' '>
 					<Button
-						iconPosition='before'
-						onClick={onClick}
 						disabled={disabled}
+						onClick={onClick}
 						text={buttonText && buttonText}
 						fullWidth
-						className={cn(
-							`text-base h-[58px] ${primary ? 'bg-black' : 'bg-white'}  ${
-								primary ? 'text-white' : 'text-black'
-							} ${
-								primary ? 'hover:bg-gray-700' : 'hover:bg-gray-100'
-							} px-[57.7px] py-[13.76px] font-bold rounded-xl focus:ring-0`
-						)}
+						className={` h-[46px] ${primary ? 'bg-black' : 'bg-white'}  ${
+							primary ? 'text-white' : 'text-black'
+						} ${
+							primary ? 'hover:bg-gray-700' : 'hover:bg-gray-100'
+						}  py-[11px] text-base font-semibold rounded-xl focus:ring-0`}
 					/>
 				</div>
 			</div>
 		</>
 	);
 };
-export default PricingCard;
+export default PricingCardForSettings;
