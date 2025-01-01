@@ -1,7 +1,7 @@
 import React from 'react';
-import UserIcon from '../../assets/Icons/UserIcon.svg';
-import LockIcon from '../../assets/Icons/LockIcon.svg';
-import HeartIcon from '../../assets/Icons/HeartIcon.svg';
+import UserIcon from '@/assets/Icons/UserIcon.svg';
+import LockIcon from '@/assets/Icons/LockIcon.svg';
+import HeartIcon from '@/assets/Icons/HeartIcon.svg';
 import { StepperProps } from '@/pages/SignIn';
 import AccountForm from './AccountForm';
 import { useSelector, useDispatch } from 'react-redux';
@@ -9,7 +9,7 @@ import { updateStep } from '../../../store/slices/accountFormSlice';
 import UpdatePasswordForm from './UpdatePasswordForm';
 import Subscriptions from './Subscriptions';
 import IconButton from '@/components/common/IconButton';
-import CrossIcon from '../../assets/Icons/CrossIcon.svg';
+import CrossIcon from '@/assets/Icons/CrossIcon.svg';
 import { RootState } from '@/store/store';
 import { updateIsSettingsOpen } from '../../../store/slices/settingsSlice';
 

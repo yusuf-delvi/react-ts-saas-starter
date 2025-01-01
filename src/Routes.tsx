@@ -11,6 +11,7 @@ type AppRoute = {
 	element: React.ReactNode;
 	protected?: boolean;
 };
+
 export const routes: AppRoute[] = [
 	{
 		path: '/',

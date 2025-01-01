@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import PersonIcon from '../../assets/Icons/User.svg';
-import UploadIcon from '../../assets/Icons/UploadIcon.svg';
+import PersonIcon from '@/assets/Icons/User.svg';
+import UploadIcon from '@/assets/Icons/UploadIcon.svg';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { useUploadQuery } from '@/api/upload.api';
@@ -42,8 +42,8 @@ const ProfileImgUploadCard: React.FC<ProfileImgUploadCardProps> = ({
 		}
 	};
 
-	const handleImageUpload = (event: any) => {
-		const file = event.target.files[0];
+	const handleImageUpload = (event: React.ChangeEvent) => {
+		const file = (event.target as HTMLInputElement).files?.[0];
 		if (file) {
 			setUploadedImage(file);
 			setQueryArgs({

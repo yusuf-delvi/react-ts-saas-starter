@@ -5,7 +5,7 @@ import { updatePasswordSchema } from '@/validationSchemas';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useUpdatePasswordMutation } from '@/api/settings.api';
-import Loading from '../../assets/Icons/Loading.svg';
+import Loading from '@/assets/Icons/Loading.svg';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
 

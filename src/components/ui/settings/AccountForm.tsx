@@ -12,7 +12,7 @@ import {
 	useGetProfileDetailQuery,
 	useUpdateAccountMutation,
 } from '@/api/settings.api';
-import Loading from '../../assets/Icons/Loading.svg';
+import Loading from '@/assets/Icons/Loading.svg';
 
 const AccountForm: React.FC = () => {
 	const loginType = useSelector(
@@ -77,7 +77,7 @@ const AccountForm: React.FC = () => {
 	}, [accountDetail, reset]);
 
 	const handleAccountFormSubmit = () => {
-		let mutationData: {
+		const mutationData: {
 			name: string;
 			userName?: string;
 			profilePicUrl?: string;
