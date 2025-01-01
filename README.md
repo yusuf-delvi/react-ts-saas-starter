@@ -25,8 +25,6 @@ This project is a modern web application built with React, TypeScript, Redux, an
 - **src**: Main source code directory.
 - **assets**: Static files like images and SVGs.
 - **components**: Reusable UI components.
-- **features**: Feature-specific logic and components.
-- **layouts**: Layout components for consistent structure.
 - **pages**: Components representing entire pages.
 - **store**: Redux store configuration and root reducer.
 - **api**: API configuration and endpoints.
