@@ -5,12 +5,11 @@ import HeartIcon from '@assets/Icons/HeartIcon.svg';
 import { StepperProps } from '@pages/SignIn';
 import AccountForm from './AccountForm';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateStep } from '@store/slices/accountFormSlice';
+import { selectStep, updateStep } from '@store/slices/accountFormSlice';
 import UpdatePasswordForm from './UpdatePasswordForm';
 import Subscriptions from './Subscriptions';
 import IconButton from '@components/common/IconButton';
 import CrossIcon from '@assets/Icons/CrossIcon.svg';
-import { RootState } from '@store/store';
 import { updateIsSettingsOpen } from '@store/slices/settingsSlice';
 
 const Settings: React.FC = () => {
@@ -19,8 +18,11 @@ const Settings: React.FC = () => {
 		2: <UpdatePasswordForm />,
 		3: <Subscriptions />,
 	};
-	const step = useSelector((state: RootState) => state.accountForm.step);
+
+	const step = useSelector(selectStep);
+
 	const dispatch = useDispatch();
+
 	return (
 		<div className='w-full flex flex-col h-full  '>
 			<div className='bg-neutral-secondary-white p-[24px] w-full flex justify-between items-center  '>

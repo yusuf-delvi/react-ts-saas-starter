@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const NotFound = () => {
 	const navigate = useNavigate();
+
 	return (
 		<div className='w-full h-screen flex justify-between items-center px-[90px] py-[192px] mobile:justify-normal tablet:justify-normal '>
 			<div className=' w-1/2 mobile:w-full tablet:w-full pr-8 '>

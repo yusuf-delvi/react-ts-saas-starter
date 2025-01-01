@@ -4,7 +4,7 @@ import { resetStep, resetSignInForm } from '@store/slices/signInFormSlice';
 import { resetSetPasswordForm } from '@store/slices/setPasswordFormSlice';
 import { useDispatch } from 'react-redux';
 
-export const successSvg = (
+const successSvg = (
 	<svg
 		width='66'
 		height='66'
@@ -23,6 +23,7 @@ export const successSvg = (
 
 const PasswordResetForm: React.FC = () => {
 	const dispatch = useDispatch();
+	
 	return (
 		<div className='w-[360px] flex flex-col'>
 			<div className=' mb-6'>{successSvg}</div>

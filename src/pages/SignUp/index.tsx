@@ -7,14 +7,15 @@ import {
 	updateStep,
 	updateSignUpForm,
 	signUpFormDataType,
+	selectSignUpFormData,
+	selectSignUpStep,
 } from '@store/slices/signupSlice';
-import { RootState } from '@store/store';
 
 export interface StepperProps {
 	[key: number]: JSX.Element;
 }
 
-export const headerComp = (
+const headerComp = (
 	<div className=' flex p-[30px] h-auto '>
 		<div className=' ml-2 flex items-center'>
 			<h1 className=' text-2xl font-bold'>SAAS Starter</h1>
@@ -25,10 +26,8 @@ export const headerComp = (
 const SignUpPage: React.FC = () => {
 	const dispatch = useDispatch();
 
-	const step: number = useSelector((state: RootState) => state.signUpForm.step);
-	const signUpFormData: signUpFormDataType = useSelector(
-		(state: RootState) => state.signUpForm.signUpFormData
-	);
+	const step: number = useSelector(selectSignUpStep);
+	const signUpFormData: signUpFormDataType = useSelector(selectSignUpFormData);
 
 	const handleStep = (value: number) => {
 		dispatch(updateStep(value));

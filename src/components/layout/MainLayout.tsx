@@ -5,9 +5,11 @@ import { routes } from '../../Routes';
 import Dialog from '@components/ui/Dialog';
 import Settings from '@components/ui/settings/Settings';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@store/store';
-import { updateIsSettingsOpen } from '@store/slices/settingsSlice';
-import { hideError } from '@store/slices/errorSlice';
+import {
+	selectIsSettingsOpen,
+	updateIsSettingsOpen,
+} from '@store/slices/settingsSlice';
+import { hideError, selectError } from '@store/slices/errorSlice';
 import ErrorAlert from '@components/common/ErrorAlert';
 import menu from '@assets/Icons/menu.png';
 interface MainLayoutProps {
@@ -15,14 +17,12 @@ interface MainLayoutProps {
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
-	const { open, message } = useSelector((state: RootState) => state.error);
+	const { open, message } = useSelector(selectError);
 	const [sidebar, setSidebar] = useState(false);
 
 	const noSideBarRoutes = ['/signup', '/signin'];
 	const location = useLocation();
-	const isSettingsOpen = useSelector(
-		(state: RootState) => state.settings.isSettingsOpen
-	);
+	const isSettingsOpen = useSelector(selectIsSettingsOpen);
 
 	const dispatch = useDispatch();
 

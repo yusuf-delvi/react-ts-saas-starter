@@ -104,4 +104,11 @@ export const {
 	setSubscribed,
 } = authSlice.actions;
 
+// selectors
+export const selectAuth = (state: { auth: AuthState }) => state.auth;
+export const selectUser = (state: { auth: AuthState }) => state.auth.user;
+export const selectToken = (state: { auth: AuthState }) => state.auth.token;
+export const selectAuthType = (state: { auth: AuthState }) =>
+	state.auth.user?.authType;
+
 export default authSlice.reducer;

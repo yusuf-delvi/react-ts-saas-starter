@@ -4,8 +4,11 @@ import UploadIcon from '@assets/Icons/UploadIcon.svg';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { useUploadQuery } from '@api/upload.api';
-import { RootState } from '@store/store';
-import { updateAccountFormData } from '@store/slices/accountFormSlice';
+import {
+	selectAccountFormData,
+	updateAccountFormData,
+} from '@store/slices/accountFormSlice';
+import { selectAuthType } from '@store/slices/authSlice';
 
 interface QueryParams {
 	name?: string;
@@ -27,14 +30,10 @@ const ProfileImgUploadCard: React.FC<ProfileImgUploadCardProps> = ({
 	const { data: url } = useUploadQuery(queryArgs, { skip: !uploadedImage });
 	const fileInputRef = useRef<HTMLInputElement>(null);
 
-	const loginType = useSelector(
-		(state: RootState) => state.auth.user?.authType
-	);
+	const loginType = useSelector(selectAuthType);
 
 	const dispatch = useDispatch();
-	const accountFormData = useSelector(
-		(state: RootState) => state.accountForm.accountFormData
-	);
+	const accountFormData = useSelector(selectAccountFormData);
 
 	const triggerFileInput = () => {
 		if (fileInputRef.current) {

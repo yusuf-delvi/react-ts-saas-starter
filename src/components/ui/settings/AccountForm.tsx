@@ -6,22 +6,21 @@ import { accountDetailsSchema } from '../../../validationSchemas';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@store/store';
-import { updateAccountFormData } from '@store/slices/accountFormSlice';
+import {
+	selectAccountFormData,
+	updateAccountFormData,
+} from '@store/slices/accountFormSlice';
 import {
 	useGetProfileDetailQuery,
 	useUpdateAccountMutation,
 } from '@api/settings.api';
 import Loading from '@assets/Icons/Loading.svg';
+import { selectAuthType } from '@store/slices/authSlice';
 
 const AccountForm: React.FC = () => {
-	const loginType = useSelector(
-		(state: RootState) => state.auth.user?.authType
-	);
+	const loginType = useSelector(selectAuthType);
 
-	const accountFormData = useSelector(
-		(state: RootState) => state.accountForm.accountFormData
-	);
+	const accountFormData = useSelector(selectAccountFormData);
 
 	const dispatch = useDispatch();
 
@@ -183,4 +182,5 @@ const AccountForm: React.FC = () => {
 		</div>
 	);
 };
+
 export default AccountForm;

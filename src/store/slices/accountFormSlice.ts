@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '@store/store';
 
 export interface AccountFormState {
 	fullName: string;
@@ -40,4 +41,10 @@ const accountFormSlice = createSlice({
 
 export const { updateAccountFormData, updateStep, resetSettingsStep } =
 	accountFormSlice.actions;
+
 export default accountFormSlice.reducer;
+
+// selectors
+export const selectStep = (state: RootState) => state.accountForm.step;
+export const selectAccountFormData = (state: RootState) =>
+	state.accountForm.accountFormData;

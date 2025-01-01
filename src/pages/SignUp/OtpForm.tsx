@@ -6,7 +6,7 @@ import { resetsignUpForm } from '@store/slices/signupSlice';
 import BackButton from '@assets/Icons/BackButton.svg';
 import OtpTimer from '@components/ui/Timer';
 
-export const backButtonSvg = <img src={BackButton} alt='back' />;
+const backButtonSvg = <img src={BackButton} alt='back' />;
 
 interface Props {
 	handleStep: (value: number) => void;

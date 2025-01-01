@@ -8,12 +8,13 @@ import { setPasswordFormSchema } from '../../validationSchemas';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { updateStep } from '../../store/slices/signInFormSlice';
-import { RootState } from '@store/store';
+import { selectSetPasswordFormData } from '@store/slices/setPasswordFormSlice';
 
 interface Props {
 	step: number;
 	handleStep: (value: number) => void;
 }
+
 export const backButtonSvg = <img src={BackButton} alt='back' />;
 
 const SetPasswordForm: React.FC<Props> = ({ step, handleStep }) => {
@@ -21,11 +22,10 @@ const SetPasswordForm: React.FC<Props> = ({ step, handleStep }) => {
 		password: '',
 		confirmPassword: '',
 	});
+
 	const [errorMssg, setErrorMssg] = React.useState('');
 
-	const emailandOtp = useSelector(
-		(state: RootState) => state.setPasswordForm.setPasswordFormData
-	);
+	const emailandOtp = useSelector(selectSetPasswordFormData);
 
 	const dispatch = useDispatch();
 	const [setNewPasswordMutation, { isSuccess, isError, error }] =

@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
-import { RootState } from '@store/store';
+import { selectToken } from '@store/slices/authSlice';
 
 const ProtectedRoute: React.FC = () => {
-	const token = useSelector((state: RootState) => state.auth.token);
+	const token = useSelector(selectToken);
 	return token ? <Outlet /> : <Navigate to='/signin' />;
 };
 

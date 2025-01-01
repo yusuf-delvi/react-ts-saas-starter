@@ -2,12 +2,12 @@ import IconButton from '@components/common/IconButton';
 import TopArrow from '@assets/Icons/TopArrow.svg';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@store/store';
 import AccountActions from '../ui/AccountActions';
 import { useGetProfileDetailQuery } from '@api/settings.api';
 import { updateIsSettingsOpen } from '@store/slices/settingsSlice';
 import { updateStep } from '@store/slices/accountFormSlice';
 import CrossIcon from '@assets/Icons/CrossIcon.svg';
+import { selectUser } from '@store/slices/authSlice';
 
 const SideBar: React.FC<{
 	onClose?: () => void;
@@ -15,7 +15,7 @@ const SideBar: React.FC<{
 	const [settingsModalOpen, setSettingsModalOpen] = useState(false);
 	const dispatch = useDispatch();
 
-	const name = useSelector((state: RootState) => state.auth.user?.name);
+	const name = useSelector(selectUser)?.name;
 	const [subscription, setSubscription] = useState('FREE');
 
 	const { data: accountDetail, refetch: refetchAccountDetail } =

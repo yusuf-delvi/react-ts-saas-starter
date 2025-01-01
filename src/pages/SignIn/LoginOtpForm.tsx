@@ -4,11 +4,13 @@ import React, { useCallback, useEffect, useRef } from 'react';
 import { useResendOtpMutation } from '@api/signup.api';
 import { useVerifyResetPasswordOtpMutation } from '@api/signin.api';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateSetPasswordForm } from '../../store/slices/setPasswordFormSlice';
+import {
+	selectSetPasswordFormData,
+	updateSetPasswordForm,
+} from '@store/slices/setPasswordFormSlice';
 import OtpTimer from '@components/ui/Timer';
-import { RootState } from '@store/store';
 
-export const backButtonSvg = (
+const backButtonSvg = (
 	<svg
 		width='119'
 		height='20'
@@ -34,6 +36,7 @@ export const backButtonSvg = (
 		</defs>
 	</svg>
 );
+
 interface Props {
 	handleStep: (value: number) => void;
 	userId?: string;
@@ -54,9 +57,7 @@ const LoginOtpForm: React.FC<Props> = ({ step, handleStep }) => {
 
 	const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
 
-	const email = useSelector(
-		(state: RootState) => state.setPasswordForm.setPasswordFormData.email
-	);
+	const email = useSelector(selectSetPasswordFormData).email;
 
 	const dispatch = useDispatch();
 	const [verifyOtpMutation, { isSuccess, isError, error }] =
@@ -88,6 +89,7 @@ const LoginOtpForm: React.FC<Props> = ({ step, handleStep }) => {
 			setOtp({ ...otp, [id]: '' }); // Clear the value if it's not a number between 1 and 9
 		}
 	};
+
 	const handleKeyDown = (
 		index: number,
 		e: React.KeyboardEvent<HTMLInputElement>
@@ -256,4 +258,5 @@ const LoginOtpForm: React.FC<Props> = ({ step, handleStep }) => {
 		);
 	}
 };
+
 export default LoginOtpForm;

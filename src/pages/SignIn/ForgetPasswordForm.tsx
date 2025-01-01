@@ -6,12 +6,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
 	updateSetPasswordForm,
 	setPasswordFormDataType as forgetPasswordDataType,
+	selectSetPasswordFormData,
 } from '../../store/slices/setPasswordFormSlice';
 import { useResendOtpMutation as useForgetPasswordMutation } from '@api/signup.api';
 import { forgetPasswordFormSchema } from '../../validationSchemas';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { RootState } from '@store/store';
 
 interface Props {
 	step: number;
@@ -21,9 +21,7 @@ interface Props {
 const ForgetPasswordPage: React.FC<Props> = ({ step, handleStep }) => {
 	const [errorMssg, setErrorMssg] = React.useState('');
 
-	const forgetPasswordFormData = useSelector(
-		(state: RootState) => state.setPasswordForm.setPasswordFormData
-	);
+	const forgetPasswordFormData = useSelector(selectSetPasswordFormData);
 
 	const dispatch = useDispatch();
 	const [forgetPasswordMutation, { isSuccess, isError, error }] =

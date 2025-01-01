@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { useUpdatePasswordMutation } from '@api/settings.api';
 import Loading from '@assets/Icons/Loading.svg';
 import { useSelector } from 'react-redux';
-import { RootState } from '@store/store';
+import { selectAuthType } from '@store/slices/authSlice';
 
 const UpdatePasswordForm: React.FC = () => {
 	const [passwords, setPasswords] = useState({
@@ -17,9 +17,7 @@ const UpdatePasswordForm: React.FC = () => {
 	});
 	const [errorMssg, setErrorMssg] = useState('');
 
-	const loginType = useSelector(
-		(state: RootState) => state.auth.user?.authType
-	);
+	const loginType = useSelector(selectAuthType);
 
 	const [updatePasswordMutation, { isLoading, isError, error }] =
 		useUpdatePasswordMutation();

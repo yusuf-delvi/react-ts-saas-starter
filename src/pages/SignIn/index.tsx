@@ -4,15 +4,14 @@ import ForgetPasswordPage from './ForgetPasswordForm';
 import LoginOtpForm from './LoginOtpForm';
 import SetPasswordForm from './SetPasswordForm';
 import PasswordResetForm from './PasswordResetForm';
-import { updateStep } from '@store/slices/signInFormSlice';
+import { updateStep, selectStep } from '@store/slices/signInFormSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@store/store';
 
 export interface StepperProps {
 	[key: number]: JSX.Element;
 }
 
-export const headerComp = (
+const headerComp = (
 	<div className=' flex p-[30px] h-auto '>
 		<div className=' ml-2 flex items-center'>
 			<h1 className=' text-2xl font-bold'>SAAS Starter</h1>
@@ -21,11 +20,14 @@ export const headerComp = (
 );
 
 const SignInPage: React.FC = () => {
-	const step: number = useSelector((state: RootState) => state.signInForm.step);
+	const step: number = useSelector(selectStep);
+
 	const dispatch = useDispatch();
+
 	const handleStep = (value: number) => {
 		dispatch(updateStep(value));
 	};
+
 	const StepperComponents: StepperProps = {
 		1: <SignInForm step={step} handleStep={handleStep} />,
 		2: <ForgetPasswordPage step={step} handleStep={handleStep} />,
