@@ -1,10 +1,10 @@
-import Button from '@/components/common/Button';
+import Button from '@components/common/Button';
 import React, { useCallback, useEffect, useRef } from 'react';
-import { useVerifyOtpMutation, useResendOtpMutation } from '@/api/signup.api';
+import { useVerifyOtpMutation, useResendOtpMutation } from '@api/signup.api';
 import { useDispatch } from 'react-redux';
-import { resetsignUpForm } from '../../store/slices/signupSlice';
-import BackButton from '../../assets/Icons/BackButton.svg';
-import OtpTimer from '@/components/ui/Timer';
+import { resetsignUpForm } from '@store/slices/signupSlice';
+import BackButton from '@assets/Icons/BackButton.svg';
+import OtpTimer from '@components/ui/Timer';
 
 export const backButtonSvg = <img src={BackButton} alt='back' />;
 

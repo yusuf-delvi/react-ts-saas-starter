@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
-import BackButton from '../../assets/Icons/BackButtonIcon.svg';
-import Input from '@/components/common/Input';
-import Button from '@/components/common/Button';
+import BackButton from '@assets/Icons/BackButtonIcon.svg';
+import Input from '@components/common/Input';
+import Button from '@components/common/Button';
 import { useSelector, useDispatch } from 'react-redux';
-import { useSetNewPasswordMutation } from '@/api/signin.api';
-import { setPasswordFormSchema } from '@/validationSchemas';
+import { useSetNewPasswordMutation } from '@api/signin.api';
+import { setPasswordFormSchema } from '../../validationSchemas';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { updateStep } from '../../store/slices/signInFormSlice';
+import { RootState } from '@store/store';
 
 interface Props {
 	step: number;
@@ -23,7 +24,7 @@ const SetPasswordForm: React.FC<Props> = ({ step, handleStep }) => {
 	const [errorMssg, setErrorMssg] = React.useState('');
 
 	const emailandOtp = useSelector(
-		(state: any) => state.setPasswordForm.setPasswordFormData
+		(state: RootState) => state.setPasswordForm.setPasswordFormData
 	);
 
 	const dispatch = useDispatch();

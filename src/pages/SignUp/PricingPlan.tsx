@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import PricingCard from '@/components/ui/PricingCard';
+import PricingCard from '@components/ui/PricingCard';
 import {
 	useCreatePortalSessionMutation,
 	useUpdateSubscriptionMutation,
-} from '@/api/payment.api';
-import { useGetProfileDetailQuery } from '@/api/settings.api';
+} from '@api/payment.api';
+import { useGetProfileDetailQuery } from '@api/settings.api';
 import { resetStep } from '../../store/slices/signupSlice';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';

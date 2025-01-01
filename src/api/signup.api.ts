@@ -1,4 +1,4 @@
-import { baseApi } from './index.api';
+import { baseApi } from '@api/index.api';
 
 export const signUpApiSlice = baseApi.injectEndpoints({
 	endpoints: (builder) => ({

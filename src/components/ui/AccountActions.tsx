@@ -1,9 +1,9 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import LogoutIcon from '../../assets/Icons/LogoutIcon.svg';
-import SettingsIcon from '../../assets/Icons/SettingsIcon.svg';
+import LogoutIcon from '@assets/Icons/LogoutIcon.svg';
+import SettingsIcon from '@assets/Icons/SettingsIcon.svg';
 import { useDispatch } from 'react-redux';
-import { updateIsSettingsOpen } from '../../store/slices/settingsSlice';
-import { resetSettingsStep } from '../../store/slices/accountFormSlice';
+import { updateIsSettingsOpen } from '@store/slices/settingsSlice';
+import { resetSettingsStep } from '@store/slices/accountFormSlice';
 
 interface AccountActionsProps {
 	setSettingsModalOpen: Dispatch<SetStateAction<boolean>>;

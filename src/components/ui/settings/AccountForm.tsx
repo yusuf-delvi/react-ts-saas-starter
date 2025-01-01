@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
-import ProfileImgUploadCard from '@/components/common/ProfileImgUploadCard';
-import Button from '@/components/common/Button';
-import Input from '@/components/common/Input';
-import { accountDetailsSchema } from '@/validationSchemas';
+import ProfileImgUploadCard from '@components/common/ProfileImgUploadCard';
+import Button from '@components/common/Button';
+import Input from '@components/common/Input';
+import { accountDetailsSchema } from '../../../validationSchemas';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@/store/store';
-import { updateAccountFormData } from '../../../store/slices/accountFormSlice';
+import { RootState } from '@store/store';
+import { updateAccountFormData } from '@store/slices/accountFormSlice';
 import {
 	useGetProfileDetailQuery,
 	useUpdateAccountMutation,
-} from '@/api/settings.api';
-import Loading from '@/assets/Icons/Loading.svg';
+} from '@api/settings.api';
+import Loading from '@assets/Icons/Loading.svg';
 
 const AccountForm: React.FC = () => {
 	const loginType = useSelector(

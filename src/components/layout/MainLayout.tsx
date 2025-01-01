@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import SideBar from '@/components/layout/Sidebar';
+import SideBar from '@components/layout/Sidebar';
 import { useLocation } from 'react-router-dom';
 import { routes } from '../../Routes';
-import Dialog from '@/components/ui/Dialog';
-import Settings from '@/components/ui/settings/Settings';
+import Dialog from '@components/ui/Dialog';
+import Settings from '@components/ui/settings/Settings';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@/store/store';
-import { updateIsSettingsOpen } from '@/store/slices/settingsSlice';
-import { hideError } from '@/store/slices/errorSlice';
-import ErrorAlert from '@/components/common/ErrorAlert';
-import menu from '../../assets/Icons/menu.png';
+import { RootState } from '@store/store';
+import { updateIsSettingsOpen } from '@store/slices/settingsSlice';
+import { hideError } from '@store/slices/errorSlice';
+import ErrorAlert from '@components/common/ErrorAlert';
+import menu from '@assets/Icons/menu.png';
 interface MainLayoutProps {
 	children: React.ReactNode;
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
-	const { open, message } = useSelector((state: any) => state.error);
+	const { open, message } = useSelector((state: RootState) => state.error);
 	const [sidebar, setSidebar] = useState(false);
 
 	const noSideBarRoutes = ['/signup', '/signin'];

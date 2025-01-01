@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react';
 import { backButtonSvg } from './SetPasswordForm';
-import Input from '@/components/common/Input';
-import Button from '@/components/common/Button';
+import Input from '@components/common/Input';
+import Button from '@components/common/Button';
 import { useSelector, useDispatch } from 'react-redux';
 import {
 	updateSetPasswordForm,
 	setPasswordFormDataType as forgetPasswordDataType,
 } from '../../store/slices/setPasswordFormSlice';
-import { useResendOtpMutation as useForgetPasswordMutation } from '@/api/signup.api';
-import { forgetPasswordFormSchema } from '@/validationSchemas';
+import { useResendOtpMutation as useForgetPasswordMutation } from '@api/signup.api';
+import { forgetPasswordFormSchema } from '../../validationSchemas';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
+import { RootState } from '@store/store';
 
 interface Props {
 	step: number;
@@ -21,7 +22,7 @@ const ForgetPasswordPage: React.FC<Props> = ({ step, handleStep }) => {
 	const [errorMssg, setErrorMssg] = React.useState('');
 
 	const forgetPasswordFormData = useSelector(
-		(state: any) => state.setPasswordForm.setPasswordFormData
+		(state: RootState) => state.setPasswordForm.setPasswordFormData
 	);
 
 	const dispatch = useDispatch();

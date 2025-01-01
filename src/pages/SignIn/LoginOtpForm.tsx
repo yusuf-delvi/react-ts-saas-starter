@@ -1,11 +1,12 @@
 // React Skelaton
-import Button from '@/components/common/Button';
+import Button from '@components/common/Button';
 import React, { useCallback, useEffect, useRef } from 'react';
-import { useResendOtpMutation } from '@/api/signup.api';
-import { useVerifyResetPasswordOtpMutation } from '@/api/signin.api';
+import { useResendOtpMutation } from '@api/signup.api';
+import { useVerifyResetPasswordOtpMutation } from '@api/signin.api';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateSetPasswordForm } from '../../store/slices/setPasswordFormSlice';
-import OtpTimer from '@/components/ui/Timer';
+import OtpTimer from '@components/ui/Timer';
+import { RootState } from '@store/store';
 
 export const backButtonSvg = (
 	<svg
@@ -54,7 +55,7 @@ const LoginOtpForm: React.FC<Props> = ({ step, handleStep }) => {
 	const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
 
 	const email = useSelector(
-		(state: any) => state.setPasswordForm.setPasswordFormData.email
+		(state: RootState) => state.setPasswordForm.setPasswordFormData.email
 	);
 
 	const dispatch = useDispatch();

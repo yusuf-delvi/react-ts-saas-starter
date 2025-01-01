@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import PersonIcon from '@/assets/Icons/User.svg';
-import UploadIcon from '@/assets/Icons/UploadIcon.svg';
+import PersonIcon from '@assets/Icons/User.svg';
+import UploadIcon from '@assets/Icons/UploadIcon.svg';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { useUploadQuery } from '@/api/upload.api';
-import { RootState } from '@/store/store';
-import { updateAccountFormData } from '@/store/slices/accountFormSlice';
+import { useUploadQuery } from '@api/upload.api';
+import { RootState } from '@store/store';
+import { updateAccountFormData } from '@store/slices/accountFormSlice';
 
 interface QueryParams {
 	name?: string;

@@ -1,23 +1,23 @@
 import React, { useEffect } from 'react';
-import Input from '@/components/common/Input';
-import Button from '@/components/common/Button';
+import Input from '@components/common/Input';
+import Button from '@components/common/Button';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import {
 	updateSignInForm,
 	signInFormDataType,
-} from '../../store/slices/signInFormSlice';
-import { updateSignUpEmail } from '../../store/slices/signupSlice';
+} from '@store/slices/signInFormSlice';
+import { updateSignUpEmail } from '@store/slices/signupSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { useSignInMutation } from '@/api/signin.api';
-import { RootState } from '../../store/store';
-import { signInFormSchema } from '@/validationSchemas';
+import { useSignInMutation } from '@api/signin.api';
+import { RootState } from '@store/store';
+import { signInFormSchema } from '../../validationSchemas';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { resetSignInForm } from '../../store/slices/signInFormSlice';
-import { updateStep } from '../../store/slices/signupSlice';
+import { resetSignInForm } from '@store/slices/signInFormSlice';
+import { updateStep } from '@store/slices/signupSlice';
 import { GoogleLogin } from '@react-oauth/google';
-import { useGoogleLogInMutation } from '@/api/signup.api';
+import { useGoogleLogInMutation } from '@api/signup.api';
 
 interface Props {
 	step: number;
@@ -30,7 +30,7 @@ const SignInPage: React.FC<Props> = ({ step, handleStep }) => {
 	const authState = useSelector((state: RootState) => state.auth);
 	const token = useSelector((state: RootState) => state.auth.token);
 	const signInFormData: signInFormDataType = useSelector(
-		(state: any) => state.signInForm.signInFormData
+		(state: RootState) => state.signInForm.signInFormData
 	);
 
 	const dispatch = useDispatch();

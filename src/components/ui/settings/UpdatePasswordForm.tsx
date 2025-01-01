@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import PasswordInput from '@/components/common/PasswordInput';
-import Button from '@/components/common/Button';
-import { updatePasswordSchema } from '@/validationSchemas';
+import PasswordInput from '@components/common/PasswordInput';
+import Button from '@components/common/Button';
+import { updatePasswordSchema } from '../../../validationSchemas';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { useUpdatePasswordMutation } from '@/api/settings.api';
-import Loading from '@/assets/Icons/Loading.svg';
+import { useUpdatePasswordMutation } from '@api/settings.api';
+import Loading from '@assets/Icons/Loading.svg';
 import { useSelector } from 'react-redux';
-import { RootState } from '@/store/store';
+import { RootState } from '@store/store';
 
 const UpdatePasswordForm: React.FC = () => {
 	const [passwords, setPasswords] = useState({

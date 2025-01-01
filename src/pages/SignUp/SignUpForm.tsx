@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
-import Input from '@/components/common/Input';
-import Button from '@/components/common/Button';
+import Input from '@components/common/Input';
+import Button from '@components/common/Button';
 import { Link } from 'react-router-dom';
-import { signUpFormDataType } from '../../store/slices/signupSlice';
+import { signUpFormDataType } from '@store/slices/signupSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
-import { useSignUpMutation } from '@/api/signup.api';
+import { useSignUpMutation } from '@api/signup.api';
 import { useNavigate } from 'react-router-dom';
-import { signUpFormSchema } from '@/validationSchemas';
+import { signUpFormSchema } from '../../validationSchemas';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { RootState } from '@/store/store';
+import { RootState } from '@store/store';
 import { GoogleLogin } from '@react-oauth/google';
-import { useGoogleLogInMutation } from '@/api/signup.api';
+import { useGoogleLogInMutation } from '@api/signup.api';
 
 export const googleIcon = (
 	<svg

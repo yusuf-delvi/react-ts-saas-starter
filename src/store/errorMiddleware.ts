@@ -1,4 +1,4 @@
-import { showError } from '@/store/slices/errorSlice';
+import { showError } from '@store/slices/errorSlice';
 import { Middleware } from 'redux';
 
 export const errorMiddleware: Middleware = (storeAPI) => (next) => (action) => {

@@ -22,16 +22,14 @@
 
 		"baseUrl": "./",
 		"paths": {
-			"@/*": ["src/*"]
-			// "@api/*": ["api/*"],
-			// "@components/*": ["components/*"],
-			// "@hooks/*": ["hooks/*"],
-			// "@pages/*": ["pages/*"],
-			// "@store/*": ["store/*"],
-			// "@types/*": ["types/*"],
-			// "@utils/*": ["utils/*"],
-			// "@assets/*": ["assets/*"],
-			// "@features/*": ["features/*"]
+			"@api/*": ["src/api/*"],
+			"@components/*": ["src/components/*"],
+			"@hooks/*": ["src/hooks/*"],
+			"@pages/*": ["src/pages/*"],
+			"@store/*": ["src/store/*"],
+			"@types/*": ["src/types/*"],
+			"@utils/*": ["src/utils/*"],
+			"@assets/*": ["src/assets/*"]
 		},
 		"types": ["node", "jest", "@testing-library/jest-dom"],
 		"esModuleInterop": true

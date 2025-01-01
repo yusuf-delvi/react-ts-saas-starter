@@ -1,9 +1,9 @@
 import {
 	useCreatePortalSessionMutation,
 	useUpdateSubscriptionMutation,
-} from '@/api/payment.api';
-import { useGetProfileDetailQuery } from '@/api/settings.api';
-import PricingCardForSettings from '@/components/ui/settings/PricingCardForSettings';
+} from '@api/payment.api';
+import { useGetProfileDetailQuery } from '@api/settings.api';
+import PricingCardForSettings from '@components/ui/settings/PricingCardForSettings';
 import React, { useEffect, useState } from 'react';
 
 export const starter = ['Starter Plan'];

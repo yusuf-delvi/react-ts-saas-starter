@@ -15,12 +15,12 @@ import {
 	REGISTER,
 } from 'redux-persist';
 import authReducer from './slices/authSlice';
-import { baseApi } from '../api/index.api';
+import { baseApi } from '@api/index.api';
 import signUpFormReducer from './slices/signupSlice';
 import signInFormReducer from './slices/signInFormSlice';
 import setPasswordFormReducer from './slices/setPasswordFormSlice';
-import accountFormReducer from '@/store/slices/accountFormSlice';
-import settingsSliceReducer from '@/store/slices/settingsSlice';
+import accountFormReducer from './slices/accountFormSlice';
+import settingsSliceReducer from './slices/settingsSlice';
 import errorReducer from './slices/errorSlice';
 import { errorMiddleware } from './errorMiddleware';
 

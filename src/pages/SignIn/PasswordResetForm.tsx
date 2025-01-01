@@ -1,7 +1,7 @@
-import Button from '@/components/common/Button';
+import Button from '@components/common/Button';
 import React from 'react';
-import { resetStep, resetSignInForm } from '../../store/slices/signInFormSlice';
-import { resetSetPasswordForm } from '../../store/slices/setPasswordFormSlice';
+import { resetStep, resetSignInForm } from '@store/slices/signInFormSlice';
+import { resetSetPasswordForm } from '@store/slices/setPasswordFormSlice';
 import { useDispatch } from 'react-redux';
 
 export const successSvg = (

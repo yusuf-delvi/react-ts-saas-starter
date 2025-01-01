@@ -1,4 +1,4 @@
-import { baseApi } from './index.api';
+import { baseApi } from '@api/index.api';
 
 interface QueryParams {
 	type?: string;

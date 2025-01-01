@@ -4,10 +4,5 @@ import EnvironmentPlugin from 'vite-plugin-environment';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
-	resolve: {
-		alias: {
-			'@': '/src',
-		},
-	},
 	plugins: [react(), EnvironmentPlugin('all'), tsconfigPaths()],
 });

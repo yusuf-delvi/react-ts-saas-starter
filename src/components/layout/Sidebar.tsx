@@ -1,13 +1,13 @@
-import IconButton from '@/components/common/IconButton';
-import TopArrow from '../../assets/Icons/TopArrow.svg';
+import IconButton from '@components/common/IconButton';
+import TopArrow from '@assets/Icons/TopArrow.svg';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@/store/store';
+import { RootState } from '@store/store';
 import AccountActions from '../ui/AccountActions';
-import { useGetProfileDetailQuery } from '@/api/settings.api';
-import { updateIsSettingsOpen } from '../../store/slices/settingsSlice';
-import { updateStep } from '../../store/slices/accountFormSlice';
-import CrossIcon from '../../assets/Icons/CrossIcon.svg';
+import { useGetProfileDetailQuery } from '@api/settings.api';
+import { updateIsSettingsOpen } from '@store/slices/settingsSlice';
+import { updateStep } from '@store/slices/accountFormSlice';
+import CrossIcon from '@assets/Icons/CrossIcon.svg';
 
 const SideBar: React.FC<{
 	onClose?: () => void;

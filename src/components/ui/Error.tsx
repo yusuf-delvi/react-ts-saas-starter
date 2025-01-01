@@ -1,5 +1,5 @@
-import ErrorImage from '../../assets/Icons/Error.svg';
-import Button from '../common/Button';
+import ErrorImage from '@assets/Icons/Error.svg';
+import Button from '@components/common/Button';
 
 const Error = () => {
 	return (

@@ -9,7 +9,7 @@ import {
 	KeyboardEventHandler,
 } from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
-import { cn } from '@/utils/cn';
+import { cn } from '@utils/cn';
 
 const inputStyles = cva('w-full pl-12 pr-10', {
 	variants: {
@@ -52,7 +52,10 @@ interface Props extends VariantProps<typeof inputStyles> {
 	onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
 	onClearFun?: () => void;
 	name?: string;
-	register?: any;
+	register?: (
+		name: string,
+		options?: object
+	) => { onChange: (e: ChangeEvent<HTMLInputElement>) => void };
 }
 
 const Input: FC<Props> = ({
@@ -136,7 +139,6 @@ const Input: FC<Props> = ({
 					type={type}
 					id={id}
 					value={value}
-					onChange={onChange || ((e) => setInputValue?.(e.target.value))}
 					{...(register && name
 						? register(name, {
 								onChange: (e: ChangeEvent<HTMLInputElement>) => {
@@ -147,6 +149,7 @@ const Input: FC<Props> = ({
 										setInputValue(e.target.value);
 									}
 								},
+								// eslint-disable-next-line no-mixed-spaces-and-tabs
 						  })
 						: {})}
 					onKeyDown={onKeyDown}

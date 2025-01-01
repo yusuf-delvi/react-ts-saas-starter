@@ -4,7 +4,7 @@ import {
 	BaseQueryFn,
 	FetchBaseQueryError,
 } from '@reduxjs/toolkit/query/react';
-import { setCredentials, logOut } from '../store/slices/authSlice';
+import { setCredentials, logOut } from '@store/slices/authSlice';
 
 interface QueryArgs {
 	url: string;
@@ -17,7 +17,7 @@ interface RefreshResponse {
 	refreshToken: string;
 }
 
-import type { RootState } from '@/store/store';
+import type { RootState } from '@store/store';
 
 const baseUrl = import.meta.env.VITE_API_BASE_URL as string;
 const xApiKey = import.meta.env.VITE_X_API_KEY as string;

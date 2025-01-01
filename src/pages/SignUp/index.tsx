@@ -1,14 +1,14 @@
 import React from 'react';
-import SignUpForm from '@/pages/SignUp/SignUpForm';
-import OtpForm from '@/pages/SignUp/OtpForm';
-import PricingPlan from '@/pages/SignUp/PricingPlan';
+import SignUpForm from '@pages/SignUp/SignUpForm';
+import OtpForm from '@pages/SignUp/OtpForm';
+import PricingPlan from '@pages/SignUp/PricingPlan';
 import { useSelector, useDispatch } from 'react-redux';
 import {
 	updateStep,
 	updateSignUpForm,
 	signUpFormDataType,
-} from '@/store/slices/signupSlice';
-import { RootState } from '@/store/store';
+} from '@store/slices/signupSlice';
+import { RootState } from '@store/store';
 
 export interface StepperProps {
 	[key: number]: JSX.Element;

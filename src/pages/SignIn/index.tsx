@@ -1,11 +1,12 @@
 import React from 'react';
-import SignInForm from '@/pages/SignIn/SignInForm';
-import ForgetPasswordPage from '@/pages/SignIn/ForgetPasswordForm';
-import LoginOtpForm from '@/pages/SignIn/LoginOtpForm';
-import SetPasswordForm from '@/pages/SignIn/SetPasswordForm';
-import PasswordResetForm from '@/pages/SignIn/PasswordResetForm';
-import { updateStep } from '@/store/slices/signInFormSlice';
+import SignInForm from './SignInForm';
+import ForgetPasswordPage from './ForgetPasswordForm';
+import LoginOtpForm from './LoginOtpForm';
+import SetPasswordForm from './SetPasswordForm';
+import PasswordResetForm from './PasswordResetForm';
+import { updateStep } from '@store/slices/signInFormSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@store/store';
 
 export interface StepperProps {
 	[key: number]: JSX.Element;
@@ -20,7 +21,7 @@ export const headerComp = (
 );
 
 const SignInPage: React.FC = () => {
-	const step: number = useSelector((state: any) => state.signInForm.step);
+	const step: number = useSelector((state: RootState) => state.signInForm.step);
 	const dispatch = useDispatch();
 	const handleStep = (value: number) => {
 		dispatch(updateStep(value));
