@@ -68,7 +68,7 @@ const baseQueryWithReauth: BaseQueryFn<
 			}
 		}
 
-		if (errorData?.statusCode === 10004) {
+		if (errorData?.statusCode == 10004 || errorData?.statusCode == 10001) {
 			api.dispatch(logOut());
 		}
 	}
